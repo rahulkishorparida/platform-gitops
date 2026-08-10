@@ -1,6 +1,5 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
-
 metadata:
   name: gatekeeper-policies
   namespace: argocd
@@ -12,8 +11,11 @@ spec:
 
   source:
     repoURL: https://github.com/rahulkishorparida/platform-infra.git
-    path: infrastructure/security/gatekeeper
     targetRevision: main
+    path: infrastructure/security/gatekeeper
+
+    directory:
+      recurse: true
 
   destination:
     server: https://kubernetes.default.svc
