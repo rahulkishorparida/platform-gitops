@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: gatekeeper-policies
+  name: gatekeeper-templates
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "1"
@@ -13,7 +13,9 @@ spec:
   source:
     repoURL: https://github.com/rahulkishorparida/platform-infra.git
     targetRevision: main
-    path: infrastructure/security/gatekeeper/policies
+    path: infrastructure/security/gatekeeper/policies/constraint-templates
+    directory:
+      recurse: true
 
   destination:
     server: https://kubernetes.default.svc
@@ -25,5 +27,5 @@ spec:
       selfHeal: true
 
 
-      # directory:
+        # directory:
       # recurse: true
