@@ -31,9 +31,23 @@ spec:
       kind: ValidatingWebhookConfiguration
       name: istio-validator-istio-system
       jqPathExpressions:
-        - .webhooks[]?.failurePolicy
+        - .webhooks[]?.failurePolicy 
 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+# Ignore differences in this field.
+#   alues.yaml
+# validationFailurePolicy: Fail
+#         │
+# Desired Istio configuration
+
+# Argo CD
+# ignoreDifferences
+#         │
+# Don't reconcile failurePolicy differences
+
+# Istio
+#   │
+# May manage/change the live webhook failurePolicy
