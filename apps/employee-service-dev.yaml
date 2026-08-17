@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: employee-service-dev
+  namespace: argocd
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/rahulkishorparida/employee-service-gitops.git
+    targetRevision: main
+    path: helm/employee-service
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dev
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+  syncOptions:
+    - CreateNamespace=true
