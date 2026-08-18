@@ -16,6 +16,13 @@ spec:
     server: https://kubernetes.default.svc
     namespace: dev
 
+  ignoreDifferences:
+    - group: argoproj.io
+      kind: Rollout
+      name: employee-service
+      jsonPointers:
+        - /spec/replicas   
+
   syncPolicy:
     automated:
       prune: true
