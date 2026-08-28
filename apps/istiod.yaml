@@ -37,6 +37,9 @@ spec:
     automated:
       prune: true
       selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true  
 # Ignore differences in this field.
 #   alues.yaml
 # validationFailurePolicy: Fail
