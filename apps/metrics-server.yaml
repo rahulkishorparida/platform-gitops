@@ -16,10 +16,11 @@ spec:
 
     helm:
       values: |
-        securePort: 4443 
+        hostNetwork:
+          enabled: true 
         args:
           - --kubelet-insecure-tls
-          - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+          - --kubelet-preferred-address-types=InternalIP
           - --metric-resolution=15s
 
 
