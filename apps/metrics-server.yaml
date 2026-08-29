@@ -37,8 +37,8 @@ spec:
       prune: true
       selfHeal: true
 
-  syncOptions:
-    - CreateNamespace=true
+    syncOptions:
+      - CreateNamespace=true
 
 
       # Which node address should I use
