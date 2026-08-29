@@ -16,6 +16,7 @@ spec:
 
     helm:
       values: |
+        securePort: 4443 
         args:
           - --kubelet-insecure-tls
           - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
