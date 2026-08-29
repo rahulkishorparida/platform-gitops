@@ -1,5 +1,6 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
+
 metadata:
   name: metrics-server
   namespace: argocd
@@ -15,16 +16,17 @@ spec:
     targetRevision: 3.12.1
 
     helm:
-      values: | 
+      values: |
         hostNetwork:
           enabled: true
-        containerPort: 10251  
+
+        containerPort: 10251
+
         args:
           - --secure-port=10251
           - --kubelet-insecure-tls
           - --kubelet-preferred-address-types=InternalIP,Hostname
           - --metric-resolution=15s
-
 
   destination:
     server: https://kubernetes.default.svc
@@ -35,8 +37,8 @@ spec:
       prune: true
       selfHeal: true
 
-    syncOptions:
-      - CreateNamespace=true
+  syncOptions:
+    - CreateNamespace=true
 
 
       # Which node address should I use
