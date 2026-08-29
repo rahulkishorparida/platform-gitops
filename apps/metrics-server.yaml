@@ -16,6 +16,9 @@ spec:
 
     helm:
       values: | 
+        hostNetwork:
+          enabled: true
+        containerPort: 10251  
         args:
           - --secure-port=10251
           - --kubelet-insecure-tls
