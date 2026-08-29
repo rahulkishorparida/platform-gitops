@@ -17,9 +17,9 @@ spec:
     helm:
       values: | 
         args:
-          - --secure-port=4443
+          - --secure-port=10251
           - --kubelet-insecure-tls
-          - --kubelet-preferred-address-types=InternalIP
+          - --kubelet-preferred-address-types=InternalIP,Hostname
           - --metric-resolution=15s
 
 
