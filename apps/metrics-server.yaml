@@ -15,10 +15,9 @@ spec:
     targetRevision: 3.12.1
 
     helm:
-      values: |
-        hostNetwork:
-          enabled: true 
+      values: | 
         args:
+          - --secure-port=4443
           - --kubelet-insecure-tls
           - --kubelet-preferred-address-types=InternalIP
           - --metric-resolution=15s
