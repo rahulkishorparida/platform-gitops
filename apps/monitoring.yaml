@@ -11,16 +11,24 @@ spec:
   project: default
 
   sources:
+     # 1. Helm chart
     - repoURL: https://prometheus-community.github.io/helm-charts
       chart: kube-prometheus-stack
       targetRevision: 77.6.2
       helm:
         valueFiles:
           - $values/infrastructure/monitoring/kube-prometheus-stack/values.yaml
-
+     # 2. Git repository for values
     - repoURL: https://github.com/rahulkishorparida/platform-infra.git
       targetRevision: main
       ref: values
+
+     # 3. Git repository for SealedSecret
+    - repoURL: https://github.com/rahulkishorparida/platform-infra.git
+      targetRevision: main
+      path: infrastructure/monitoring/secrets
+      # directory:
+      #   recurse: false  
 
   destination:
     server: https://kubernetes.default.svc
