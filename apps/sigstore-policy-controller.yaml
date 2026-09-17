@@ -7,10 +7,17 @@ metadata:
 spec:
   project: default
 
-  source:
-    repoURL: https://sigstore.github.io/helm-charts
-    chart: policy-controller
-    targetRevision: 0.10.8
+  sources:
+    - repoURL: https://sigstore.github.io/helm-charts
+      chart: policy-controller
+      targetRevision: 0.10.8
+      helm:
+        valueFiles:
+          - $values/infrastructure/sigstore-controller/values.yaml
+
+    - repoURL: https://github.com/rahulkishorparida/platform-infra.git
+      targetRevision: main
+      ref: values
 
   destination:
     server: https://kubernetes.default.svc
