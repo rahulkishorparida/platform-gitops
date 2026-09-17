@@ -29,12 +29,14 @@ spec:
       name: policy.sigstore.dev
       jsonPointers:
         - /webhooks/0/clientConfig/caBundle
+        - /webhooks/0/namespaceSelector
 
     - group: admissionregistration.k8s.io
       kind: MutatingWebhookConfiguration
       name: policy.sigstore.dev
       jsonPointers:
         - /webhooks/0/clientConfig/caBundle
+        - /webhooks/0/namespaceSelector
 
   syncPolicy:
     automated:
