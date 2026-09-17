@@ -30,6 +30,12 @@ spec:
       jsonPointers:
         - /webhooks/0/clientConfig/caBundle
 
+    - group: admissionregistration.k8s.io
+      kind: MutatingWebhookConfiguration
+      name: policy.sigstore.dev
+      jsonPointers:
+        - /webhooks/0/clientConfig/caBundle
+
   syncPolicy:
     automated:
       prune: true
