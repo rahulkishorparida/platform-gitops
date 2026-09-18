@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sigstore-policies
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/rahulkishorparida/platform-infra.git
+    targetRevision: main
+    path: security/gatekeeper/policy/sigstore
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cosign-system
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
