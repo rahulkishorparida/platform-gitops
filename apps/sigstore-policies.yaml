@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/rahulkishorparida/platform-infra.git
     targetRevision: main
-    path: security/gatekeeper/policy/sigstore
+    path: security/gatekeeper/policies/sigstore
 
   destination:
     server: https://kubernetes.default.svc
