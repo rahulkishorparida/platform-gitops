@@ -25,7 +25,7 @@ spec:
         args:
           - --secure-port=10251
           - --kubelet-insecure-tls
-          - --kubelet-preferred-address-types=InternalIP,Hostname
+          - --kubelet-preferred-address-types=Hostname,InternalIP
           - --metric-resolution=15s
 
   destination:
