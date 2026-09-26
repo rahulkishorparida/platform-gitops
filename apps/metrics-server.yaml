@@ -37,7 +37,8 @@ spec:
     syncOptions:
       - CreateNamespace=true
 
-      
       # Which node address should I use
       # How should I handle the kubelet certificate?
       # Metrics Server - HTTPS - Kubelet - certificate verification disabled
+
+
