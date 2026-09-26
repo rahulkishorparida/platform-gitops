@@ -10,20 +10,23 @@ metadata:
 spec:
   project: default
 
-  sources:
-    # Metrics Server Helm chart
-    - repoURL: https://kubernetes-sigs.github.io/metrics-server/
-      chart: metrics-server
-      targetRevision: 3.12.1
+  source:
+    repoURL: https://kubernetes-sigs.github.io/metrics-server/
+    chart: metrics-server
+    targetRevision: 3.12.1
 
-      helm:
-        valueFiles:
-          - $values/infrastructure/metrics-server/values.yaml
+    helm:
+      values: |
+        hostNetwork:
+          enabled: true
 
-    # Git repository containing the values.yaml
-    - repoURL: https://github.com/rahulkishorparida/platform-infra.git
-      targetRevision: main
-      ref: values
+        containerPort: 10251
+
+        args:
+          - --secure-port=10251
+          - --kubelet-insecure-tls
+          - --kubelet-preferred-address-types=InternalIP,Hostname
+          - --metric-resolution=15s
 
   destination:
     server: https://kubernetes.default.svc
@@ -37,8 +40,7 @@ spec:
     syncOptions:
       - CreateNamespace=true
 
+
       # Which node address should I use
       # How should I handle the kubelet certificate?
       # Metrics Server - HTTPS - Kubelet - certificate verification disabled
-
-
